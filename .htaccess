@@ -3,6 +3,7 @@ RewriteEngine On
 #accept loading of actual files and directories
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(css|jpg|jpeg|png|gif|ico)$ [NC]
 
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
 

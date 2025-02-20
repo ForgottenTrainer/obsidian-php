@@ -5,21 +5,30 @@ class App {
     public function __construct() {
 
     }
+    private $controller = 'Home';
+    public $method = 'index';
     private function splitURL() {
         $URL = $_GET['url'] ?? 'home';
-        $URL = explode("/", $_GET['url']);
+        $URL = explode("/", $URL);
         return $URL;
     }
     
     public function loadController() {
         $URL = $this->splitURL();
         $filename = "./app/controllers/". ucfirst($URL[0].".php");
+        
         if(file_exists($filename)) {
             require $filename;
+            $this->controller = ucfirst($URL[0]);
         } else {
-            $filename = "./app/controllers/404.php";
+            
+            $filename = "./app/controllers/_404.php";
             require $filename;
+            $this->controller = "_404";
         }
+
+        $controller = new $this->controller;
+        call_user_func_array( [$controller ,$this->method],[]);
     }
 }
 
