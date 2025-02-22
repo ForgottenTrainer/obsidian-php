@@ -5,18 +5,22 @@ class Model {
 
     public function __construct() {}
 
-    public function first() {
-        
-    }
-    public function insert (){
-
-    }
-
-    public function update (){
+    public function where($data) {
         
     }
 
-    public function delete (){
+    public function first($data) {
+        
+    }
+    public function insert ($data){
+
+    }
+
+    public function update ($id, $data, $id_column = "id"){
+        
+    }
+
+    public function delete ($id, $id_column = "id") {
         
     }
 }
